@@ -31,7 +31,7 @@ NOTE: Optional features were not included in original project. I have added the 
 ## Lab 2
 
 ### App Description
-`TODO://` Completes all of the required objectives for this lab.
+`TODO://` Completes all of the required objectives for this lab, and allows the user to input multiple answer choices.
 
 ### App Walk-though
 
@@ -39,14 +39,15 @@ NOTE: Optional features were not included in original project. I have added the 
 
 
 ## Required
-- [x] Create New Project in Android Studio
-- [x] Add a view for the front side of the flashcard to display the question
-- [x] Add a view for the back side of the flashcard to display the answer
-- [x] Build in logic to show the answer side when the card is tapped
-- [x] Push code to GitHu
+- [x] Create a new activity 
+- [x] Add a + button
+- [x] Add a cancel button
+- [x] Add two fields for the user to input data
+- [x] Add a save button
+- [x] Push code to GitHub
 ## Optional
-- [x] toggle the flashcard between the question side and the answer side
-- [x] Style the question and answer side of the card to better distinguish between the two sides
-- [x] Add selectable multiple choice answers beneath the card
-   - [x] Change the background color of the multiple choice answers when clicked to indicate whether the question waanswered correctly
-- [x] Further customize and style the card
+- [ ] Add an edit button in the main activity 
+- [ ] Show an error message if not all fields are fillef
+- [ ] Display a Snackbar notification for when the new card is created successfully
+- [x] Allow the user to add Multiple Choice answers when creating the card
+- [x] Further customize and style your app!
