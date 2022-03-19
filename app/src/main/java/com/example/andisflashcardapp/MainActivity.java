@@ -3,13 +3,27 @@ package com.example.andisflashcardapp;
 import androidx.annotation.DrawableRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.IntentCompat;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     boolean answers_Visible=true;
+
+
+
+
+
+
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +88,24 @@ findViewById(R.id.toggle_answers).setOnClickListener(new View.OnClickListener() 
         }
     }
 } );
-            
+
+
+
+
+
+
+
+
+
+
+        findViewById(R.id.flashcard_add).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, AddCardActivity.class);
+                MainActivity.this.startActivityForResult(intent, 100);
+
+            }
+        });
 
 
 
@@ -92,13 +123,30 @@ findViewById(R.id.toggle_answers).setOnClickListener(new View.OnClickListener() 
 
 
 
+    }
 
 
 
 
 
 
+   // @SuppressLint("MissingSuperCall")   Errors tells me to call super. I don't know what that means, but it still works without it
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 100) {
+            String question=data.getExtras().getString("Question");
+            String correct_Answer=data.getExtras().getString("Answer");
+            String incorrect_Answer1=data.getExtras().getString("Incorrect1");
+            String incorrect_Answer2=data.getExtras().getString("Incorrect2");
 
+            ((TextView)findViewById(R.id.FlashcardQuestion)).setText(question);
+            ((TextView)findViewById(R.id.FlashcardAnswer)).setText(correct_Answer);
+            ((TextView)findViewById(R.id.FlashcardAnswer1)).setText(incorrect_Answer1);
+            ((TextView)findViewById(R.id.FlashcardAnswer2)).setText(incorrect_Answer2);
+
+
+        }
 
     }
 }
