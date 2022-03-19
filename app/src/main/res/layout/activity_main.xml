@@ -1,35 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:textAlignment="center"
     tools:context=".MainActivity">
+
     <TextView
         android:id="@+id/FlashcardQuestion"
-        android:gravity="center"
-        android:layout_width="wrap_content"
+        android:layout_width="390dp"
         android:layout_height="200dp"
+        android:gravity="center"
+        android:textAlignment="inherit"
         android:text="How tall is the Eiffel Tower?"
-        android:textSize="40sp"
+        android:textSize="35sp"
+        android:background="@drawable/card_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.224" />
+        app:layout_constraintVertical_bias="0.175" />
+
     <TextView
         android:id="@+id/FlashcardAnswer"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
         android:gravity="center"
+        android:textAlignment="inherit"
         android:text="1063 feet "
         android:textSize="40sp"
-        android:visibility="invisible"
+        android:visibility="visible"
+        android:background="@drawable/answer_background_neutral"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias=".5" />
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/FlashcardAnswer1"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:textAlignment="inherit"
+        android:text="507 feet "
+        android:textSize="40sp"
+        android:visibility="visible"
+        android:background="@drawable/answer_background_neutral"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias=".7" />
+
+    <TextView
+        android:id="@+id/FlashcardAnswer2"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:textAlignment="inherit"
+        android:text="1326 feet "
+        android:textSize="40sp"
+        android:visibility="visible"
+        android:background="@drawable/answer_background_neutral"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias=".9" />
+    <ImageView
+        android:id="@+id/bottom_bar"
+        android:layout_width="500dp"
+        android:layout_height="55dp"
+        android:background="@drawable/answer_background_neutral"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1"/>
+    <ImageView
+        android:id="@+id/flashcard_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_outline_note_add_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.99"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.997" />
+
+    <ImageView
+        android:id="@+id/toggle_answers"
+        android:src="@drawable/ic_iconmonstr_crossed_eye"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/ic_iconmonstr_eye_5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.999" />
+
+
+      />
+</androidx.constraintlayout.widget.ConstraintLayout>
