@@ -35,7 +35,7 @@ NOTE: Optional features were not included in original project. I have added the 
 
 ### App Walk-though
 
-<img src="https://github.com/AKolari/AndisFlashcardApp/raw/master/ezgif.com-gif-maker.gif" width=200><br>
+<img src="https://github.com/AKolari/AndisFlashcardApp/blob/master/ezgif.com-gif-maker%20(1).gif" width=200><br>
 
 
 ## Required
