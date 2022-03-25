@@ -9,9 +9,9 @@
 
 ### App Walk-though
 
+Part 1:  <img src="https://github.com/AKolari/AndisFlashcardApp/blob/739f9ba7d0452862cdd71b6b2d6ca9332a89b174/Lab3Part1.gif" width=200><br>
 
-
-
+Part 2: <img src="https://github.com/AKolari/AndisFlashcardApp/blob/739f9ba7d0452862cdd71b6b2d6ca9332a89b174/Lab3Part1.gif" width=200><br>
 ## Required
 - [x] Add necessary dependencies
 - [x] Add database related files
