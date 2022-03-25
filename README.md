@@ -2,6 +2,55 @@
 
 📝 `NOTE:` Paste the README templates for each subsequent lab here at the top, (i.e. lab 2, 3, 4). This will show a history of your development process including which users tories you completed and how your app looked and functioned at each step.
 
+## Lab 3
+
+### App Description
+`TODO://` Completes all of the required objectives for this lab, and all of the optional objectives minus randomization.
+
+### App Walk-though
+
+
+
+
+## Required
+- [x] Add necessary dependencies
+- [x] Add database related files
+- [x] Allow user to create a card and see their card upon relaunch
+- [x] Allow the user to create and cycle through multiple cards
+## Optional
+- [x] Add delete functionality
+- [ ] Allow for randomized order of cards
+- [x] Allow for cards to be edited
+- [x] Make cards multiple choice cards
+
+
+
+## Lab 2
+
+### App Description
+`TODO://` Completes all of the required objectives for this lab, and all the optional objectives as well..
+
+### App Walk-though
+
+<img src="https://github.com/AKolari/AndisFlashcardApp/blob/master/ezgif.com-gif-maker%20(1).gif" width=200><br>
+
+
+## Required
+- [x] Create a new activity 
+- [x] Add a + button
+- [x] Add a cancel button
+- [x] Add two fields for the user to input data
+- [x] Add a save button
+- [x] Push code to GitHub
+## Optional
+- [x] Add an edit button in the main activity 
+- [x] Show an error message if not all fields are fillef
+- [ ] Display a Snackbar notification for when the new card is created successfully
+- [x] Allow the user to add Multiple Choice answers when creating the card
+- [x] Further customize and style your app!
+
+
+
 ## Lab 1
 
 ### App Description
@@ -46,8 +95,8 @@ NOTE: Optional features were not included in original project. I have added the 
 - [x] Add a save button
 - [x] Push code to GitHub
 ## Optional
-- [ ] Add an edit button in the main activity 
-- [ ] Show an error message if not all fields are fillef
+- [x] Add an edit button in the main activity 
+- [x] Show an error message if not all fields are fillef
 - [ ] Display a Snackbar notification for when the new card is created successfully
 - [x] Allow the user to add Multiple Choice answers when creating the card
 - [x] Further customize and style your app!
