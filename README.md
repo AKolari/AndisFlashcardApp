@@ -13,7 +13,7 @@ Part 1:  <img src="https://github.com/AKolari/AndisFlashcardApp/blob/739f9ba7d04
 
 Part 2: <img src="https://github.com/AKolari/AndisFlashcardApp/blob/0fc9fd7718c425ca1b1e7067d1e720b3ee9cd8a5/Lab3Part2.gif" width=200><br>
 
-Part 3: <img src="https://github.com/AKolari/AndisFlashcardApp/blob/d9d1f8066693bc75f5a707e5e688a07b1fbc19e9/Lab3Part1.gif" width=200><br>
+Part 3: <img src="https://github.com/AKolari/AndisFlashcardApp/blob/feea61b56164043eee694d670eff520af9014a7c/Lab3Part3.gif" width=200><br>
 
 ## Required
 - [x] Add necessary dependencies
