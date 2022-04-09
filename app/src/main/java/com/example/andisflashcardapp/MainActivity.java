@@ -8,7 +8,10 @@ import androidx.core.content.IntentCompat;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,60 +25,80 @@ public class MainActivity extends AppCompatActivity {
        findViewById(R.id.FlashcardAnswer2).setBackground(getResources().getDrawable(R.drawable.answer_background_neutral));
 
    }
-
+     void startTimer() {
+        time.cancel();
+        time.start();
+    }
    boolean answers_Visible=true;
    boolean options_visible=false;
+   boolean answered=false;
 FlashcardDatabase database;
 List<Flashcard> cards;
     int cardIndex=0;
+    CountDownTimer time;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        final Animation leftOutAnim = AnimationUtils.loadAnimation(MainActivity.this, R.anim.left_out);
+        final Animation rightInAnim = AnimationUtils.loadAnimation(MainActivity.this, R.anim.right_in_bounce_back);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         database=new FlashcardDatabase(getApplicationContext());
 
         cards=database.getAllCards();
+
+ time= new CountDownTimer(16000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                ((TextView) findViewById(R.id.timer)).setText("" + millisUntilFinished / 1000);
+                findViewById(R.id.timer).setVisibility(View.VISIBLE);
+                if(millisUntilFinished<10000){
+                    ((TextView) findViewById(R.id.timer)).setTextColor(getResources().getColor(R.color.red));
+                }
+                if(answered==true){
+                    findViewById(R.id.timer).setVisibility(View.INVISIBLE);
+                }
+            }
+
+            public void onFinish() {
+                findViewById(R.id.timer).setVisibility(View.INVISIBLE);
+                if(answered==false){
+                findViewById(R.id.FlashcardAnswer2).setBackground(getResources().getDrawable(R.drawable.answer_background_incorrect));
+                findViewById(R.id.FlashcardAnswer).setBackground(getResources().getDrawable(R.drawable.answer_background_correct));
+                findViewById(R.id.FlashcardAnswer1).setBackground(getResources().getDrawable(R.drawable.answer_background_incorrect));
+            }}
+        };
+        startTimer();
 findViewById(R.id.flashcard_delete).setVisibility(View.INVISIBLE);
         findViewById(R.id.flashcard_add).setVisibility(View.INVISIBLE);
         findViewById(R.id.flashcard_edit).setVisibility(View.INVISIBLE);
-
-        ((TextView)findViewById(R.id.FlashcardQuestion)).setText(cards.get(cardIndex).getQuestion());
-        ((TextView)findViewById(R.id.FlashcardAnswer)).setText(cards.get(cardIndex).getAnswer());
-        ((TextView)findViewById(R.id.FlashcardAnswer1)).setText(cards.get(cardIndex).getWrongAnswer1());
-        ((TextView)findViewById(R.id.FlashcardAnswer2)).setText(cards.get(cardIndex).getWrongAnswer2());
-/* findViewById(R.id.FlashcardQuestion).setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                findViewById(R.id.FlashcardQuestion).setVisibility(View.INVISIBLE);
-                findViewById(R.id.FlashcardAnswer).setVisibility(View.VISIBLE);*/
-/*
-        findViewById(R.id.FlashcardQuestion).setOnClickListener((View v) -> {
-
-            findViewById(R.id.FlashcardQuestion).setVisibility(View.INVISIBLE);
-            findViewById(R.id.FlashcardAnswer).setVisibility(View.VISIBLE);
-        });
+if(cards.size()!=0) {
+    ((TextView) findViewById(R.id.FlashcardQuestion)).setText(cards.get(cardIndex).getQuestion());
+    ((TextView) findViewById(R.id.FlashcardAnswer)).setText(cards.get(cardIndex).getAnswer());
+    ((TextView) findViewById(R.id.FlashcardAnswer1)).setText(cards.get(cardIndex).getWrongAnswer1());
+    ((TextView) findViewById(R.id.FlashcardAnswer2)).setText(cards.get(cardIndex).getWrongAnswer2());
+}
 
         findViewById(R.id.FlashcardAnswer).setOnClickListener((View v) -> {
-
-            findViewById(R.id.FlashcardQuestion).setVisibility(View.VISIBLE);
-            findViewById(R.id.FlashcardAnswer).setVisibility(View.INVISIBLE);
-        });
-*/
-        findViewById(R.id.FlashcardAnswer).setOnClickListener((View v) -> {
-
+            answered=true;
             //findViewById(R.id.FlashcardQuestion).setVisibility(View.INVISIBLE);
             findViewById(R.id.FlashcardAnswer).setBackground(getResources().getDrawable(R.drawable.answer_background_correct));
+            /*new ParticleSystem(MainActivity.this, 100, R.drawable.confetti, 3000)
+                    .setSpeedRange(0.2f, 0.5f)
+                    .oneShot(findViewById(R.id.FlashcardAnswer), 100);*/
+            
+
         });
         findViewById(R.id.FlashcardAnswer1).setOnClickListener((View v) -> {
-
+answered=true;
             //findViewById(R.id.FlashcardQuestion).setVisibility(View.INVISIBLE);
             findViewById(R.id.FlashcardAnswer1).setBackground(getResources().getDrawable(R.drawable.answer_background_incorrect));
             findViewById(R.id.FlashcardAnswer).setBackground(getResources().getDrawable(R.drawable.answer_background_correct));
         });
 
         findViewById(R.id.FlashcardAnswer2).setOnClickListener((View v) -> {
-
+answered=true;
             //findViewById(R.id.FlashcardQuestion).setVisibility(View.INVISIBLE);
             findViewById(R.id.FlashcardAnswer2).setBackground(getResources().getDrawable(R.drawable.answer_background_incorrect));
             findViewById(R.id.FlashcardAnswer).setBackground(getResources().getDrawable(R.drawable.answer_background_correct));
@@ -110,6 +133,7 @@ findViewById(R.id.toggle_answers).setOnClickListener(new View.OnClickListener() 
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AddCardActivity.class);
                 MainActivity.this.startActivityForResult(intent, 100);
+                overridePendingTransition(R.anim.right_in, R.anim.left_out);
 
             }
         });
@@ -133,9 +157,9 @@ findViewById(R.id.toggle_answers).setOnClickListener(new View.OnClickListener() 
 
 
         findViewById(R.id.flashcard_delete).setOnClickListener((View v) -> {
-    database.deleteCard(((TextView) findViewById(R.id.FlashcardQuestion)).getText().toString());
-    cards=database.getAllCards();
-            cardIndex--;
+   database.deleteCard(((TextView) findViewById(R.id.FlashcardQuestion)).getText().toString());
+   cards=database.getAllCards();
+   cardIndex--;
             if(cardIndex<=-1){
                 cardIndex=cards.size()-1;
             }
@@ -152,7 +176,7 @@ findViewById(R.id.toggle_answers).setOnClickListener(new View.OnClickListener() 
                 ((TextView)findViewById(R.id.FlashcardAnswer2)).setText("WRONG");
 
             }
-             });
+            });
 
 
 
@@ -161,18 +185,10 @@ findViewById(R.id.toggle_answers).setOnClickListener(new View.OnClickListener() 
 
 
         findViewById(R.id.flashcard_next).setOnClickListener((View v) -> {
-defaultCards();
-        cardIndex++;
-        if(cardIndex==cards.size()){
-            cardIndex=0;
-        }
+            answered=false;
+            findViewById(R.id.FlashcardQuestion).startAnimation(leftOutAnim);
+             startTimer();
 
-        if(cards!=null && cards.size()>0){
-            ((TextView)findViewById(R.id.FlashcardQuestion)).setText(cards.get(cardIndex).getQuestion());
-            ((TextView)findViewById(R.id.FlashcardAnswer)).setText(cards.get(cardIndex).getAnswer());
-            ((TextView)findViewById(R.id.FlashcardAnswer1)).setText(cards.get(cardIndex).getWrongAnswer1());
-            ((TextView)findViewById(R.id.FlashcardAnswer2)).setText(cards.get(cardIndex).getWrongAnswer2());
-        }
 
         });
 
@@ -201,12 +217,54 @@ findViewById(R.id.flashcard_options).setOnClickListener(new View.OnClickListener
 });
 
 
+        leftOutAnim.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                // this method is called when the animation first starts
+                findViewById(R.id.FlashcardAnswer).startAnimation(leftOutAnim);
+                findViewById(R.id.FlashcardAnswer1).startAnimation(leftOutAnim);
+                findViewById(R.id.FlashcardAnswer2).startAnimation(leftOutAnim);
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                // this method is called when the animation is finished playing
+                defaultCards();
+                cardIndex++;
+                if(cardIndex==cards.size()){
+                    cardIndex=0;
+                }
+
+                if(cards!=null && cards.size()>0){
+                    ((TextView)findViewById(R.id.FlashcardQuestion)).setText(cards.get(cardIndex).getQuestion());
+                    ((TextView)findViewById(R.id.FlashcardAnswer)).setText(cards.get(cardIndex).getAnswer());
+                    ((TextView)findViewById(R.id.FlashcardAnswer1)).setText(cards.get(cardIndex).getWrongAnswer1());
+                    ((TextView)findViewById(R.id.FlashcardAnswer2)).setText(cards.get(cardIndex).getWrongAnswer2());
+                }
+                findViewById(R.id.FlashcardQuestion).startAnimation(rightInAnim);
+                findViewById(R.id.FlashcardAnswer). startAnimation(rightInAnim);
+                findViewById(R.id.FlashcardAnswer1).startAnimation(rightInAnim);
+                findViewById(R.id.FlashcardAnswer2).startAnimation(rightInAnim);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+                // we don't need to worry about this method
+            }
+        });
 
 
 
 
 
     }
+
+
+
+
+
+
+
 
 
    // @SuppressLint("MissingSuperCall")   Errors tells me to call super. I don't know what that means, but it still works without it
@@ -222,6 +280,8 @@ findViewById(R.id.flashcard_options).setOnClickListener(new View.OnClickListener
             ((TextView) findViewById(R.id.FlashcardAnswer)).setText(correct_Answer);
             ((TextView) findViewById(R.id.FlashcardAnswer1)).setText(incorrect_Answer1);
             ((TextView) findViewById(R.id.FlashcardAnswer2)).setText(incorrect_Answer2);
+
+
             if (requestCode == 100) {
 
                 database.insertCard(new Flashcard(question, correct_Answer, incorrect_Answer1, incorrect_Answer2));
@@ -235,11 +295,14 @@ findViewById(R.id.flashcard_options).setOnClickListener(new View.OnClickListener
 
                 database.updateCard(cards.get(cardIndex));
             }
+
         }
         defaultCards();
 
     }
 }
+
+
 
 
 /*
@@ -274,3 +337,26 @@ Notes March 19th:
 
 
  */
+
+
+
+
+/* findViewById(R.id.FlashcardQuestion).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                findViewById(R.id.FlashcardQuestion).setVisibility(View.INVISIBLE);
+                findViewById(R.id.FlashcardAnswer).setVisibility(View.VISIBLE);*/
+/*
+        findViewById(R.id.FlashcardQuestion).setOnClickListener((View v) -> {
+
+            findViewById(R.id.FlashcardQuestion).setVisibility(View.INVISIBLE);
+            findViewById(R.id.FlashcardAnswer).setVisibility(View.VISIBLE);
+        });
+
+        findViewById(R.id.FlashcardAnswer).setOnClickListener((View v) -> {
+
+            findViewById(R.id.FlashcardQuestion).setVisibility(View.VISIBLE);
+            findViewById(R.id.FlashcardAnswer).setVisibility(View.INVISIBLE);
+        });
+*/

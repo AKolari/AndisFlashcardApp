@@ -8,6 +8,8 @@
         <entry key="app/src/main/res/drawable/answer_background_incorrect.xml" value="0.201" />
         <entry key="app/src/main/res/drawable/answer_background_neutral.xml" value="0.201" />
         <entry key="app/src/main/res/drawable/card_background.xml" value="0.201" />
+        <entry key="app/src/main/res/drawable/confetti.xml" value="0.201" />
+        <entry key="app/src/main/res/drawable/ic_KnowledgeMan_background.xml" value="0.201" />
         <entry key="app/src/main/res/drawable/ic_baseline_arrow_circle_down_24.xml" value="0.13" />
         <entry key="app/src/main/res/drawable/ic_baseline_delete_forever_24.xml" value="0.213" />
         <entry key="app/src/main/res/drawable/ic_baseline_edit_note_24.xml" value="0.213" />
@@ -15,11 +17,17 @@
         <entry key="app/src/main/res/drawable/ic_baseline_navigate_next_24.xml" value="0.1745" />
         <entry key="app/src/main/res/drawable/ic_iconmonstr_crossed_eye.xml" value="0.201" />
         <entry key="app/src/main/res/drawable/ic_iconmonstr_eye_5.xml" value="0.201" />
+        <entry key="app/src/main/res/drawable/ic_knowledge_background.xml" value="0.173" />
+        <entry key="app/src/main/res/drawable/ic_knowledge_man_background.xml" value="0.201" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1745" />
         <entry key="app/src/main/res/drawable/ic_outline_cancel_24.xml" value="0.13" />
         <entry key="app/src/main/res/drawable/ic_outline_note_add_24.xml" value="0.201" />
         <entry key="app/src/main/res/layout/activity_add_card.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_KnowledgeMan_round.xml" value="0.173" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_knowledge_man.xml" value="0.201" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.201" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.201" />
       </map>
     </option>
   </component>
