@@ -1,6 +1,29 @@
 ## Andi's Flashcard App
 
-📝 `NOTE:` Paste the README templates for each subsequent lab here at the top, (i.e. lab 2, 3, 4). This will show a history of your development process including which users tories you completed and how your app looked and functioned at each step.
+
+
+
+## Lab 4
+
+### App Description
+`TODO://` Completes all of the required objectives for this lab, and added the timer.
+
+### App Walk-though
+
+ <img src="https://github.com/AKolari/AndisFlashcardApp/blob/9effd764b02afa2c95e5e9030a57c0febeef9ede/Lab4Gif.gif" width=200><br>
+
+## Required
+- [x] Add a launcher icon for your app!
+- [x] Add a transition animation when the app goes from MainActivity to AddCardActivity
+- [x] Add an animation for when the answer is revealed.
+- [x] Add a sliding animation for when the user advances to the next card.
+- [x] Add some last touches!
+## Optional
+- [x] Styling views
+- [x] Add a countdown timer for each question
+- [ ] (Advanced Optional) Replace the answer 'reveal' animation with a 'card flip' animation
+- [ ] Add a celebration animation if the user answers the question correctly.
+
 
 ## Lab 3
 
