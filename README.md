@@ -9,8 +9,10 @@
 `TODO://` Completes all of the required objectives for this lab, and added the timer.
 
 ### App Walk-though
-
+###PART 1:
  <img src="https://github.com/AKolari/AndisFlashcardApp/blob/9effd764b02afa2c95e5e9030a57c0febeef9ede/Lab4Gif.gif" width=200><br>
+ ###PART 2:
+ <img src="https://github.com/AKolari/AndisFlashcardApp/blob/b844caae3dea10d1de583e15f58dd6c38cc725c0/Lab4GifPart2.gif" width=200><br>
 
 ## Required
 - [x] Add a launcher icon for your app!
